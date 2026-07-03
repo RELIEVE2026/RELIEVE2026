@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué está pasando hoy?</title>
+
+<style>
+body{
+    margin:0;
+    padding:15px;
+    background:#111;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    text-align:center;
+}
+
+h1{
+    margin-bottom:15px;
+    font-size: 22px;
+}
+
+/* Contenedor flexible para separar las imágenes verticalmente si hay varias */
+#contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio de separación entre cada imagen */
+}
+
+img{
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+.boton{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 25px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="titulo"></h1>
+
+<div id="contenido"></div>
+
+<div>
+    <a href="index.html" class="boton">← Regresar</a>
+</div>
+
+<script>
+const hoy = new Date();
+
+// Fuerza el día 23 para probar
+const dia = 23; 
+// Para producción usa: const dia = hoy.getDate();
+
+const programas = {
+    23: {
+        titulo: "Presentaciones del 23 de octubre",
+        // Convertimos esto en una lista [ ] con tus 9 imágenes separadas por comas
+        imagenes: [
+            "IMAGEN23_1.png",
+            "IMAGEN23_2.png",
+            "IMAGEN23_3.png",
+            "IMAGEN23_4.png",
+            "IMAGEN23_5.png",
+            "IMAGEN23_6.png",
+            "IMAGEN23_7.png",
+            "IMAGEN23_8.png",
+            "IMAGEN23_9.png"
+        ]
+    },
+    24: {
+        titulo: "Presentaciones del 24 de octubre",
+        imagenes: [
+            "IMAGEN23_22.png",
+            "IMAGEN23_32.png",
+            "IMAGEN23_42.png",
+            "IMAGEN23_52.png",
+        ]
+    }
+};
+
+if(programas[dia]){
+    document.getElementById("titulo").innerText = programas[dia].titulo;
+    
+    // Recorremos la lista de imágenes para generar las etiquetas <img> de cada una
+    const htmlImagenes = programas[dia].imagenes.map(imgUrl => {
+        return `<img src="${imgUrl}" alt="Programa">`;
+    }).join(''); // Junta todas las imágenes en una sola cadena de texto HTML
+    
+    document.getElementById("contenido").innerHTML = htmlImagenes;
+
+} else {
+    document.getElementById("titulo").innerText = "";
+    document.getElementById("contenido").innerHTML = "<div id='mensaje'>Hoy no hay actividades programadas.</div>";
+}
+</script>
+
+</body>
+</html>
