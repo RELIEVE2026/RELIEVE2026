@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Qué está pasando hoy?</title>
+    <title>What's Happening Today?</title>
 
     <style>
         body {
@@ -58,7 +58,7 @@
     <div id="contenido"></div>
 
     <div>
-        <a href="index.html" class="boton">← Regresar</a>
+        <a href="index.html" class="boton">← Back</a>
     </div>
 
     <script>
@@ -75,8 +75,8 @@
 
         // 2. Definición del programa por días del mes de julio
         const programas = {
-            5: {
-                titulo: "Presentaciones del 23 de julio",
+            23: {
+                titulo: "Presentations - July 23rd",
                 imagenes: [
                     "IMAGEN23_1.png",
                     "IMAGEN23_2.png",
@@ -90,7 +90,7 @@
                 ]
             },
             24: {
-                titulo: "Presentaciones del 24 de julio",
+                titulo: "Presentations - July 24th",
                 imagenes: [
                     "IMAGEN24_22.png",
                     "IMAGEN24_32.png",
@@ -106,7 +106,7 @@
             
             // Generamos dinámicamente las etiquetas <img>
             const htmlImagenes = programas[dia].imagenes.map(imgUrl => {
-                return `<img src="${imgUrl}" alt="Programa del día ${dia}">`;
+                return `<img src="${imgUrl}" alt="Schedule for July ${dia}">`;
             }).join(''); 
             
             document.getElementById("contenido").innerHTML = htmlImagenes;
@@ -114,7 +114,7 @@
         } else {
             // Mensaje de respaldo si no es un día del congreso
             document.getElementById("titulo").innerText = "RELIEVE 2026";
-            document.getElementById("contenido").innerHTML = "<div id='mensaje' style='margin-top:20px; color:#aaa;'>Hoy no hay actividades programadas.</div>";
+            document.getElementById("contenido").innerHTML = "<div id='mensaje' style='margin-top:20px; color:#aaa;'>There are no activities scheduled for today.</div>";
         }
     </script>
 
